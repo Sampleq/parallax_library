@@ -1,0 +1,51 @@
+.main {
+    position: relative;
+    height: 300vh;
+
+    &__wrapper {
+        position: relative;
+    }
+
+    &__title {
+        @include h1();
+    }
+
+
+    &__circle {
+        position: absolute;
+        z-index: -1;
+
+        &_1 {
+            @include circle($_diameter: 94.6rem);
+            top: -60.8rem;
+            left: calc(100% * -20 / 120);
+        }
+
+        &_2 {
+            @include circle($_diameter: 5.3rem);
+        }
+
+
+
+        &_3 {
+            @include circle($_diameter: 8.3rem);
+
+        }
+
+
+    }
+
+    &__scene {
+        position: absolute;
+
+        &_2 {
+            top: 14.5rem;
+            right: calc(100% * 50.4 / 192);
+        }
+
+        &_3 {
+            top: 48rem;
+            left: calc(100% * 80.7 / 192);
+        }
+    }
+}
