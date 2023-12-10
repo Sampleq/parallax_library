@@ -66,8 +66,8 @@
   "staticFiles": {
     "staticPath": [
       {
-        "staticPath": "assets/src/scripts/rellax.js",
-        "staticOutDir": "scripts"
+        "staticPath": "assets/src/scripts/js-libs/rellax.js",
+        "staticOutDir": "js-libs"
       }
     ],
     "watcherGlob": "**"

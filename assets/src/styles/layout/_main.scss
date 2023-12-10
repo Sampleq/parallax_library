@@ -16,9 +16,15 @@
         @include p1();
         line-height: 1.5;
         margin-top: 28rem;
+        mix-blend-mode: exclusion;
+
 
         &_2 {
             margin-top: 29rem;
+            color: adjust-hue($color: $purple, $degrees: 45deg);
+            mix-blend-mode: difference;
+            color: $blue;
+
         }
     }
 
@@ -138,6 +144,7 @@
         &_4 {
             top: 63rem;
             left: calc(100% * 40.8 / 192);
+            z-index: 0;
         }
 
         &_5 {
@@ -173,6 +180,8 @@
         &_11 {
             top: 195rem;
             right: calc(100% * 90 / 192);
+            z-index: 0;
+            mix-blend-mode: hard-light;
         }
 
         &_12 {

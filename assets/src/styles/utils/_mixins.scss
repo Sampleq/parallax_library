@@ -10,7 +10,7 @@
 
 // @mixin h3($_color: ) {}
 
-@mixin p1($_color: $black) {
+@mixin p1($_color: $textColor) {
     color: $_color;
     font-family: $mainFont;
     font-size: 15rem;
@@ -34,5 +34,7 @@
     height: $_diameter;
     border-radius: 50%;
     background-color: $_bgColor;
+
+    box-shadow: 0 0 0.4rem 0.1rem #fffa;
 
 }
