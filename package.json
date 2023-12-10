@@ -62,7 +62,8 @@
   ],
   "externals": {
     "./**/rellax.js": false,
-    "./**/parallax.js": false
+    "./**/parallax.js": false,
+    "./**/parallax.min.js": false
   },
   "staticFiles": {
     "staticPath": [
