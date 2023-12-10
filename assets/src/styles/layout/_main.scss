@@ -12,11 +12,13 @@
 
 
     &__circle {
-        position: absolute;
-        z-index: -1;
+        // position: absolute;
+        // z-index: -1;
 
         &_1 {
             @include circle($_diameter: 94.6rem);
+            position: absolute;
+            z-index: -1;
             top: -60.8rem;
             left: calc(100% * -20 / 120);
         }
@@ -29,7 +31,58 @@
 
         &_3 {
             @include circle($_diameter: 8.3rem);
+        }
 
+        &_4 {
+            @include circle($_diameter: 5.4rem);
+        }
+
+        &_5 {
+            @include circle($_diameter: 11.9rem);
+        }
+
+        &_6 {
+            @include circle($_diameter: 11.9rem);
+        }
+
+        &_7 {
+            @include circle($_diameter: 5.3rem);
+        }
+
+        &_8 {
+            @include circle($_diameter: 17rem);
+        }
+
+        &_9 {
+            @include circle($_diameter: 21rem);
+        }
+
+        &_10 {
+            @include circle($_diameter: 11rem);
+        }
+
+        &_11 {
+            @include circle($_diameter: 8rem);
+        }
+
+        &_12 {
+            @include circle($_diameter: 67rem, $_bgColor: $beige);
+        }
+
+        &_13 {
+            @include circle($_diameter: 35rem, $_bgColor: $beige);
+        }
+
+        &_14 {
+            @include circle($_diameter: 28rem, $_bgColor: $beige);
+        }
+
+        &_15 {
+            @include circle($_diameter: 22rem, $_bgColor: $beige);
+        }
+
+        &_16 {
+            @include circle($_diameter: 145rem, $_bgColor: $beige);
         }
 
 
@@ -37,6 +90,7 @@
 
     &__scene {
         position: absolute;
+        z-index: -1;
 
         &_2 {
             top: 14.5rem;
@@ -46,6 +100,76 @@
         &_3 {
             top: 48rem;
             left: calc(100% * 80.7 / 192);
+        }
+
+        &_4 {
+            top: 63rem;
+            left: calc(100% * 40.8 / 192);
+        }
+
+        &_5 {
+            top: 78rem;
+            right: calc(100% * 45.8 / 192);
+        }
+
+        &_6 {
+            top: 92rem;
+            left: calc(100% * 65.8 / 192);
+        }
+
+        &_7 {
+            top: 108rem;
+            right: calc(100% * 62 / 192);
+        }
+
+        &_8 {
+            top: 130rem;
+            right: calc(100% * 29 / 192);
+        }
+
+        &_9 {
+            top: 145rem;
+            left: calc(100% * 26 / 192);
+        }
+
+        &_10 {
+            top: 190rem;
+            left: calc(100% * 50 / 192);
+        }
+
+        &_11 {
+            top: 195rem;
+            right: calc(100% * 90 / 192);
+        }
+
+        &_12 {
+            top: 31rem;
+            right: calc(100% * 10 / 192);
+            z-index: -10;
+        }
+
+        &_13 {
+            top: 64rem;
+            left: calc(100% * 10 / 192);
+            z-index: -10;
+        }
+
+        &_14 {
+            top: 117rem;
+            right: calc(100% * 50 / 192);
+            z-index: -10;
+        }
+
+        &_15 {
+            top: 162rem;
+            right: calc(100% * 25 / 192);
+            z-index: -10;
+        }
+
+        &_16 {
+            top: 137rem;
+            left: calc(100% * (-17) / 192);
+            z-index: -10;
         }
     }
 }
