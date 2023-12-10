@@ -5,17 +5,20 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "parcel assets/src/index.html --open",
-    "dev:uikit": "parcel assets/src/uikit.html --open",
-    "build": "parcel build assets/src/index.html --out-dir=build --public-url ./",
-    "build:uikit": "parcel build assets/src/uikit.html --out-dir=uikit --public-url ./"
+    "dev": "parcel assets/src/index.html --open --no-source-maps",
+    "dev:uikit": "parcel assets/src/uikit.html --open --no-source-maps",
+    "build": "parcel build assets/src/index.html --out-dir=build --no-source-maps --public-url ./",
+    "build:uikit": "parcel build assets/src/uikit.html --out-dir=uikit --no-source-maps --public-url ./"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "parcel-bundler": "^1.12.5",
+    "parcel-plugin-clean-easy": "^1.0.2",
     "parcel-plugin-custom-dist-structure": "^1.1.20",
+    "parcel-plugin-html-externals": "^0.3.0",
+    "parcel-plugin-static-files-copy": "^2.6.0",
     "sass": "^1.69.5"
   },
   "customDistStructure": {
@@ -52,5 +55,21 @@
     "options": {
       "development": true
     }
+  },
+  "parcelCleanPaths": [
+    "build/*.*",
+    "build/**"
+  ],
+  "externals": {
+    "**/rellax.js": false
+  },
+  "staticFiles": {
+    "staticPath": [
+      {
+        "staticPath": "assets/src/scripts/rellax.js",
+        "staticOutDir": "scripts"
+      }
+    ],
+    "watcherGlob": "**"
   }
 }
