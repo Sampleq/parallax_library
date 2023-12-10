@@ -28,10 +28,10 @@
         <img src="./images/misc.png" alt="" class="scene main__img_misc">
 
 
-        <div class="rellax main__scene main__scene_2" id="scene2" data-rellax-speed="-3">
-            <div class="main__circle main__circle_2"></div>
+        <div class="rellax main__scene main__scene_2" id="scene2" data-rellax-speed="-3" data-depth="0.2">
+            <div class=" main__circle main__circle_2"></div>
         </div>
-        <div class="rellax main__scene main__scene_3" id="scene3" data-rellax-speed="5">
+        <div class="rellax main__scene main__scene_3" id="scene3" data-rellax-speed="5" data-depth="0.4">
             <div class="main__circle main__circle_3"></div>
         </div>
         <div class="rellax main__scene main__scene_4" id="scene4" data-rellax-speed="6">
@@ -79,12 +79,21 @@
 
     <!-- <script src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script> -->
 
-    <script src="js-libs/rellax.js"></script>
+    <script src="./js/js-libs/rellax.js"></script>
+    <script src="./js/js-libs/parallax.js"></script>
 
     <!-- <script src="raw:./scripts/rellax.js"></script> -->
     <script>
         var rellax = new Rellax('.rellax');
     </script>
+
+
+    <script>
+        var scene = document.getElementById('scene2');
+        var parallaxInstance = new Parallax(scene);
+    </script>
+
+
 </body>
 
 </html>
