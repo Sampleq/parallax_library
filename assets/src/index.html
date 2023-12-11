@@ -29,49 +29,49 @@
 
 
         <div class="rellax main__scene main__scene_2" id="scene2" data-rellax-speed="-3">
-            <div class=" main__circle main__circle_2" data-depth="0.8"></div>
+            <div class=" main__circle main__circle_2" data-depth="-1.8"></div>
         </div>
         <div class="rellax main__scene main__scene_3" id="scene3" data-rellax-speed="5">
             <div class="main__circle main__circle_3" data-depth="1.4"></div>
         </div>
         <div class="rellax main__scene main__scene_4" id="scene4" data-rellax-speed="6">
-            <div class="main__circle main__circle_4"></div>
+            <div class="main__circle main__circle_4" data-depth="0.4"></div>
         </div>
         <div class="rellax main__scene main__scene_5" id="scene5" data-rellax-speed="1">
-            <div class="main__circle main__circle_5"></div>
+            <div class="main__circle main__circle_5" data-depth="-1.4"></div>
         </div>
         <div class="rellax main__scene main__scene_6" id="scene6" data-rellax-speed="-1">
-            <div class="main__circle main__circle_6"></div>
+            <div class="main__circle main__circle_6" data-depth="3.4"></div>
         </div>
         <div class="rellax main__scene main__scene_7" id="scene7" data-rellax-speed="2">
-            <div class="main__circle main__circle_7"></div>
+            <div class="main__circle main__circle_7" data-depth="0.8"></div>
         </div>
         <div class="rellax main__scene main__scene_8" id="scene8" data-rellax-speed="4">
-            <div class="main__circle main__circle_8"></div>
+            <div class="main__circle main__circle_8" data-depth="2.8"></div>
         </div>
         <div class="rellax main__scene main__scene_9" id="scene9" data-rellax-speed="-1">
-            <div class="main__circle main__circle_9"></div>
+            <div class="main__circle main__circle_9" data-depth="1.1"></div>
         </div>
         <div class="rellax main__scene main__scene_10" id="scene10" data-rellax-speed="-1">
-            <div class="main__circle main__circle_10"></div>
+            <div class="main__circle main__circle_10" data-depth="-0.4"></div>
         </div>
         <div class="rellax main__scene main__scene_11" id="scene11" data-rellax-speed="2">
-            <div class="main__circle main__circle_11"></div>
+            <div class="main__circle main__circle_11" data-depth="1.5"></div>
         </div>
         <div class="rellax main__scene main__scene_12" id="scene12" data-rellax-speed="-8">
-            <div class="main__circle main__circle_12"></div>
+            <div class="main__circle main__circle_12" data-depth="0.2"></div>
         </div>
         <div class="rellax main__scene main__scene_13" id="scene13" data-rellax-speed="-5">
-            <div class="main__circle main__circle_13"></div>
+            <div class="main__circle main__circle_13" data-depth="-0.3"></div>
         </div>
         <div class="rellax main__scene main__scene_14" id="scene14" data-rellax-speed="-6">
-            <div class="main__circle main__circle_14"></div>
+            <div class="main__circle main__circle_14" data-depth="0.35"></div>
         </div>
         <div class="rellax main__scene main__scene_15" id="scene15" data-rellax-speed="-2">
-            <div class="main__circle main__circle_15"></div>
+            <div class="main__circle main__circle_15" data-depth="-0.25"></div>
         </div>
         <div class="rellax main__scene main__scene_16" id="scene16" data-rellax-speed="-8">
-            <div class="main__circle main__circle_16"></div>
+            <div class="main__circle main__circle_16" data-depth="0.1"></div>
         </div>
 
     </main>
@@ -90,18 +90,26 @@
     </script>
 
 
-    <div id="scene">
+    <!-- <div id="scene">
         <div data-depth="0.2">My first Layer!</div>
         <div data-depth="0.6">My second Layer!</div>
-    </div>
+    </div> -->
     <script>
-        var scene = document.getElementById('scene');
-        var parallaxInstance = new Parallax(scene);
+        // var scene = document.getElementById('scene');
+        // var parallaxInstance = new Parallax(scene);
 
-        var scene2 = document.getElementById('scene2');
-        var parallaxInstance = new Parallax(scene2);
-        var scene3 = document.getElementById('scene3');
-        var parallaxInstance = new Parallax(scene3);
+        // var scene2 = document.getElementById('scene2');
+        // // var parallaxInstance = new Parallax(scene2);
+        // new Parallax(scene2);
+
+
+        // обращаемся циклом ко всем оберткам (.main__scene) шариков и передаём их в функции Parallax. Библиотека parallax.js двигает детей (с html аттрибутом data-depth="-1.8") контейнера который передали аргументом в функцию Parallax.
+        const scenes = document.querySelectorAll('.main__scene');
+        for (let scene of scenes) {
+            new Parallax(scene);
+        }
+
+
     </script>
 
 
