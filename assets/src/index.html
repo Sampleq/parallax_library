@@ -103,7 +103,8 @@
         // new Parallax(scene2);
 
 
-        // обращаемся циклом ко всем оберткам (.main__scene) шариков и передаём их в функции Parallax. Библиотека parallax.js двигает детей (с html аттрибутом data-depth="-1.8") контейнера который передали аргументом в функцию Parallax.
+        // обращаемся циклом ко всем оберткам (.main__scene) шариков и передаём их в функции Parallax. Библиотека parallax.js двигает детей (с html аттрибутом data-depth="-1.8") контейнера который передали аргументом в функцию Parallax. 
+        // применяем именно к оберткам (.main__scene) т.к. библиотека parallax.js  задаёт инлайновое свойство position:relative детям, а в нашем конкретном случае нужно чтобы у .main__scene было position:absolute.  ( можно при желании переписать используя css !important для position, top , left)
         const scenes = document.querySelectorAll('.main__scene');
         for (let scene of scenes) {
             new Parallax(scene);
