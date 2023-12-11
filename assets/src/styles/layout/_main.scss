@@ -31,10 +31,13 @@
     &__img-cont {
         margin: 0 auto;
         margin-top: 33.4rem;
-        width: 63rem;
-        height: 42rem;
+
+        width: 90%;
+        max-width: 63rem;
+        max-height: 42rem;
         border-radius: 3rem;
         overflow: hidden;
+        mix-blend-mode: darken;
     }
 
     &__img {

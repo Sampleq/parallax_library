@@ -1,9 +1,21 @@
 @mixin h1($_color: $white) {
     color: $_color;
     font-family: $mainFont;
-    font-size: 10rem;
+    font-size: 4rem;
     font-style: normal;
     font-weight: 600;
+
+    @media ($mobileM) {
+        font-size: 5rem;
+    }
+
+    @media ($mobileL) {
+        font-size: 6rem;
+    }
+
+    @media ($tablet) {
+        font-size: 10rem;
+    }
 }
 
 // @mixin h2($_color: ) {}
@@ -13,9 +25,29 @@
 @mixin p1($_color: $textColor) {
     color: $_color;
     font-family: $mainFont;
-    font-size: 15rem;
+    font-size: 5rem;
     font-style: normal;
     font-weight: 600;
+
+    @media ($mobileM) {
+        font-size: 5rem;
+    }
+
+    @media ($mobileL) {
+        font-size: 6rem;
+    }
+
+    @media ($tablet) {
+        font-size: 10rem;
+    }
+
+    @media ($laptop) {
+        font-size: 14rem;
+    }
+
+    @media ($notebook) {
+        font-size: 15rem;
+    }
 
 }
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Parallax rellax libraries</title>
     <link rel="stylesheet" href="./styles/index.scss">
 </head>
 
@@ -14,19 +14,20 @@
             <div class="main__circle main__circle_1 rellax" data-rellax-speed="-1"></div>
             <h1 class="main__title">Loremipsium</h1>
 
-            <p class="main__desc">Lorem-ipsum dolor sit amet.</p>
+            <p class="rellax main__desc" data-rellax-speed="-1.5">Lorem-ipsum dolor sit amet.</p>
 
             <div class="main__img-cont">
                 <img src="./images/city.jpg" alt="img" class="main__img">
             </div>
 
-            <p class="main__desc main__desc_2">Wufficia est ut.</p>
+            <p class="rellax main__desc main__desc_2" data-rellax-speed="0.5">Wufficia est ut.</p>
 
 
         </div>
 
-        <img src="./images/misc.png" alt="" class="scene main__img_misc">
-
+        <div class="main__img_misc-cont">
+            <img src="./images/misc.png" alt="main__img_misc" class="scene main__img_misc" data-depth="-0.1">
+        </div>
 
         <div class="rellax main__scene main__scene_2" id="scene2" data-rellax-speed="-3">
             <div class=" main__circle main__circle_2" data-depth="-1.8"></div>
@@ -104,12 +105,15 @@
 
 
         // обращаемся циклом ко всем оберткам (.main__scene) шариков и передаём их в функции Parallax. Библиотека parallax.js двигает детей (с html аттрибутом data-depth="-1.8") контейнера который передали аргументом в функцию Parallax. 
-        // применяем именно к оберткам (.main__scene) т.к. библиотека parallax.js  задаёт инлайновое свойство position:relative детям, а в нашем конкретном случае нужно чтобы у .main__scene было position:absolute.  ( можно при желании переписать используя css !important для position, top , left)
+        // применяем именно к оберткам (.main__scene) т.к. библиотека parallax.js  задаёт инлайновое свойство position:relative детям, а в нашем конкретном случае нужно чтобы у .main__scene было position:absolute. 
+        //  (Чтобы запускать один экземпляр функции (и двигать множество детей , а не запускать много функций и двигать по одному ребёнку) можно при желании переписать разметку  html и  использовать в css !important для position, top , right, left:unset, чтобы переопределять инлайновый стили которые задаёт библиотека parallax.js)
         const scenes = document.querySelectorAll('.main__scene');
         for (let scene of scenes) {
             new Parallax(scene);
         }
 
+
+        new Parallax(document.querySelector('.main__img_misc-cont'));
 
     </script>
 
