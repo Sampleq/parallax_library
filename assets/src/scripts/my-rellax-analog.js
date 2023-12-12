@@ -3,6 +3,7 @@ function translateOnScroll(array) {
 
     for (let el of biasedUnits) {
         el.style.transition = '0.033s linear';
+        el.style.willChange = 'transform';
     }
 
     window.onscroll = () => {
