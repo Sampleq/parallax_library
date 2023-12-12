@@ -53,6 +53,14 @@
         }
     }
 
+    &__btn {
+        color: $white;
+        background-color: $purple;
+        padding: 2rem;
+        display: block;
+        margin: 1rem auto;
+    }
+
     &__circle {
         // position: absolute;
         // z-index: -1;
