@@ -57,6 +57,7 @@
         // position: absolute;
         // z-index: -1;
 
+
         &_1 {
             @include circle($_diameter: 94.6rem);
             position: absolute;
@@ -108,11 +109,19 @@
         }
 
         &_12 {
-            @include circle($_diameter: 67rem, $_bgColor: $beige);
+            @include circle($_diameter: 37rem, $_bgColor: $beige);
+
+            @media ($tablet) {
+                @include circle($_diameter: 67rem, $_bgColor: $beige);
+            }
         }
 
         &_13 {
-            @include circle($_diameter: 35rem, $_bgColor: $beige);
+            @include circle($_diameter: 25rem, $_bgColor: $beige);
+
+            @media ($tablet) {
+                @include circle($_diameter: 35rem, $_bgColor: $beige);
+            }
         }
 
         &_14 {
@@ -124,7 +133,11 @@
         }
 
         &_16 {
-            @include circle($_diameter: 145rem, $_bgColor: $beige);
+            @include circle($_diameter: 75rem, $_bgColor: $beige);
+
+            @media ($tablet) {
+                @include circle($_diameter: 145rem, $_bgColor: $beige);
+            }
         }
 
 
@@ -212,9 +225,15 @@
         }
 
         &_16 {
-            top: 137rem;
-            left: calc(100% * (-17) / 192);
+            top: 107rem;
+            left: calc(100% * (-17) / 29);
             z-index: -10;
+
+            @media ($tablet) {
+                top: 137rem;
+                left: calc(100% * (-17) / 192);
+                z-index: -10;
+            }
         }
     }
 }
