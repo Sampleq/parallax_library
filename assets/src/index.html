@@ -86,8 +86,15 @@
     <script src="./js/js-libs/parallax.min.js"></script>
 
 
-    <script>
+    <!-- <script>
         var rellax = new Rellax('.rellax');
+    </script> -->
+
+    <script>
+        // Set wrapper to custom-element (body) instead of the html
+        var rellax = new Rellax('.rellax', {
+            wrapper: 'body'
+        });
     </script>
 
 
@@ -98,11 +105,6 @@
     <script>
         // var scene = document.getElementById('scene');
         // var parallaxInstance = new Parallax(scene);
-
-        // var scene2 = document.getElementById('scene2');
-        // // var parallaxInstance = new Parallax(scene2);
-        // new Parallax(scene2);
-
 
         // обращаемся циклом ко всем оберткам (.main__scene) шариков и передаём их в функции Parallax. Библиотека parallax.js двигает детей (с html аттрибутом data-depth="-1.8") контейнера который передали аргументом в функцию Parallax. 
         // применяем именно к оберткам (.main__scene) т.к. библиотека parallax.js  задаёт инлайновое свойство position:relative детям, а в нашем конкретном случае нужно чтобы у .main__scene было position:absolute. 
