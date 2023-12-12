@@ -81,7 +81,7 @@
     <!-- <script src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script> -->
 
-    <script src="./js/js-libs/rellax.js"></script>
+    <!-- <script src="./js/js-libs/rellax.js"></script> -->
     <!-- <script src="./js/js-libs/parallax.js"></script> -->
     <script src="./js/js-libs/parallax.min.js"></script>
 
@@ -90,12 +90,16 @@
         var rellax = new Rellax('.rellax');
     </script> -->
 
-    <script>
+    <!-- убираем скрытие address-bar в мобильных браузерах - через body   position: fixed; и библиотекой Rellax смотрим за скроллом body.
+    Без этого на iPhone (iOS 15.7.7 15.3.1) глюк - при появлении/скрытии address-bar изменяется положение элементов (translateY), смещаемых с помощью  Rellax. Такой же глюк присутствует на https://coolbackgrounds.io/ . 
+    А на демо сайте библиотеке https://dixonandmoe.com/rellax/  - глюка при появлении/скрытии address-bar нет!
+    -->
+    <!-- <script>
         // Set wrapper to custom-element (body) instead of the html
         var rellax = new Rellax('.rellax', {
             wrapper: 'body'
         });
-    </script>
+    </script> -->
 
 
     <!-- <div id="scene">
@@ -114,10 +118,12 @@
             new Parallax(scene);
         }
 
-
         new Parallax(document.querySelector('.main__img_misc-cont'));
 
     </script>
+
+    <!-- подключаем свой аналог библиотеки Rellax -->
+    <script src="./scripts/my-rellax-analog.js"></script>
 
 
 </body>
