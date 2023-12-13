@@ -1,10 +1,12 @@
 const btn = document.querySelector('.btn');
 // const switchableScript = document.getElementById('switchableScript');
+const descr = document.querySelector('.main__desc_3');
 
-;
-// console.log(document.querySelector('[src*="my-rellax-analog"]'));
-// выбираем элемент (это будет тег script)аттрибут которого содержит my-rellax-analog и записываем значение его аттрибута (т.е. полный путь к скрипту) в переменную initialJSLib
+// выбираем элемент (это будет тег script), аттрибут которого содержит my-rellax-analog и записываем значение его аттрибута (т.е. полный путь к скрипту) в переменную initialJSLib
+// ^= - filters Elements where src (or any other attr) starts with "keyword"
+// *= - filters Elements where src (or any other attr) containss "keyword"
 const initialJSLib = document.querySelector('[src*="my-rellax-analog"]').src;
+// console.log(document.querySelector('[src*="my-rellax-analog"]'));
 // console.log(initialJSLib);
 
 let currentJSLib = initialJSLib;
@@ -55,6 +57,8 @@ btn.onclick = () => {
             // console.log(currentJSLib);
 
             btn.innerHTML = `switch to <b>my-rellax-analog.js</b>`;
+            descr.innerHTML = `Using <br> rellax.js`;
+            descr.classList.toggle('main__desc_3_corr-pos');
             // }, 33);
         };
 
@@ -74,7 +78,10 @@ btn.onclick = () => {
 
         currentJSLib = newScriptTag.src;
 
-        btn.innerHTML = `switch to <b>rellax.js</b>`
+        btn.innerHTML = `switch to <b>rellax.js</b>`;
+        descr.innerHTML = `Using <br> my-rellax-analog.js`;
+        descr.classList.toggle('main__desc_3_corr-pos');
+
 
         // alert(`
         // rellax.js - stopped and removed!

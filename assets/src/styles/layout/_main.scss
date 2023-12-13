@@ -25,6 +25,57 @@
             mix-blend-mode: difference;
             color: $lightblue;
 
+            mix-blend-mode: unset;
+        }
+
+        &_3 {
+            position: absolute;
+            bottom: 17%;
+            // margin-bottom: -50rem;
+            font-size: 7rem;
+            line-height: 1.1;
+            // text-wrap: nowrap;
+            color: darken($color: $white, $amount: 10%);
+            mix-blend-mode: unset;
+            z-index: -2;
+
+            @media ($mobileM) {
+                font-size: 8rem;
+            }
+
+            @media ($mobileL) {
+                font-size: 9rem;
+            }
+
+            @media ($tablet) {
+                font-size: 13rem;
+                bottom: 14%;
+            }
+
+            @media ($laptop) {
+                font-size: 18rem;
+            }
+
+            @media ($notebook) {
+                font-size: 20rem;
+                bottom: 10%;
+            }
+
+            &_corr-pos {
+                bottom: 57%;
+
+                @media ($mobileL) {
+                    bottom: 67%;
+                }
+
+                @media ($tablet) {
+                    bottom: 53%;
+                }
+
+                @media ($laptop) {
+                    bottom: 43%;
+                }
+            }
         }
     }
 
@@ -198,6 +249,8 @@
         &_9 {
             top: 145rem;
             left: calc(100% * 26 / 192);
+            z-index: -3;
+
         }
 
         &_10 {
