@@ -56,9 +56,15 @@
     &__btn {
         color: $white;
         background-color: $purple;
+        box-shadow: 0 0 0.4rem 0.2rem #fffa;
         padding: 2rem;
         display: block;
         margin: 1rem auto;
+        transition: 0.3s;
+
+        &:hover {
+            filter: hue-rotate(45deg);
+        }
     }
 
     &__circle {
@@ -75,10 +81,8 @@
         }
 
         &_2 {
-            @include circle($_diameter: 5.3rem);
+            @include circle($_diameter: 5.3rem, $_bgColor: $blue);
         }
-
-
 
         &_3 {
             @include circle($_diameter: 8.3rem);

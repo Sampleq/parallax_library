@@ -18,7 +18,7 @@ function translateOnScroll(array) {
             } else {
                 speedCoeff = el.getAttribute('data-rellax-speed')
             }
-            el.style.transform = `translate3d(0, ${(-Math.sin(speedCoeff / 10) * window.scrollY) * 0.6}px, 0)`;
+            el.style.transform = `translate3d(0, ${(-1.6 * Math.sin(speedCoeff / 10) * window.scrollY) * 0.4}px, 0)`;
         }
     }
 

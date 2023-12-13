@@ -1,9 +1,20 @@
 const btn = document.querySelector('.btn');
+// const switchableScript = document.getElementById('switchableScript');
 
-let currentJSLib = 'my-rellax-analog.js';
+;
+// console.log(document.querySelector('[src*="my-rellax-analog"]'));
+// выбираем элемент (это будет тег script)аттрибут которого содержит my-rellax-analog и записываем значение его аттрибута (т.е. полный путь к скрипту) в переменную initialJSLib
+const initialJSLib = document.querySelector('[src*="my-rellax-analog"]').src;
+// console.log(initialJSLib);
+
+let currentJSLib = initialJSLib;
+
+// задаём переменную чтобы мы могли включать/отключать библиотеку rellax.js
+let rellax;
 
 btn.onclick = () => {
-    if (currentJSLib === 'my-rellax-analog.js') {
+    if (currentJSLib === initialJSLib) {
+        // if (currentJSLib.includes('my-rellax-analog')) {
         // document.body.style.backgroundColor = 'red';
 
         const biasedUnits = document.querySelectorAll('.rellax');
@@ -14,8 +25,9 @@ btn.onclick = () => {
         }
         window.onscroll = undefined;
 
-        switchableScript.remove();
-        console.warn('my-rellax-analog.js - stoped!')
+        // switchableScript.remove();
+        document.querySelector('[src*="my-rellax-analog"]').remove();
+        console.warn('my-rellax-analog.js - stopped and removed!')
 
         let newScriptTag = document.createElement('script');
         // let newScriptTag2 = document.createElement('script');
@@ -24,25 +36,49 @@ btn.onclick = () => {
         // newScriptTag2.src = './js/test-outer-script.js';
         // document.body.appendChild(newScriptTag2);
 
-        setTimeout(() => {
-            // document.body.style.backgroundColor = 'red';
-            var rellax = new Rellax('.rellax');
 
+        // setTimeout(() => {
+        newScriptTag.onload = () => {
+            // document.body.style.backgroundColor = 'red';
+
+            rellax = new Rellax('.rellax');
 
             console.warn('rellax.js - running!');
 
-            alert(`
-                my-rellax-analog.js - stoped!
+            // alert(`
+            //     my-rellax-analog.js - stopped and removed!
 
-                now rellax.js - running!`)
-            // }, 1000);
+            //     now rellax.js - is running!`);
 
             currentJSLib = newScriptTag.src;
 
+            // console.log(currentJSLib);
 
-        }, 16);
-        btn.innerHTML = `switch to <b>my-rellax-analog.js </b>`;
-    } else {
-        alert('already switched forward  - need to finish code for switching back)');
+            btn.innerHTML = `switch to <b>my-rellax-analog.js</b>`;
+            // }, 33);
+        };
+
+    } else if (currentJSLib.includes('rellax.js')) {
+        // alert('already switched forward  - need to finish code for switching back)');
+        // document.body.style.backgroundColor = 'green';
+
+        rellax.destroy();
+        console.warn('rellax.js - destroyed!');
+        // console.log(document.querySelector('[src="./js/js-libs/rellax.js"]'));
+        document.querySelector('[src="./js/js-libs/rellax.js"]').remove();
+        console.warn('rellax.js - removed!');
+
+        let newScriptTag = document.createElement('script');
+        newScriptTag.src = initialJSLib;
+        document.body.appendChild(newScriptTag);
+
+        currentJSLib = newScriptTag.src;
+
+        btn.innerHTML = `switch to <b>rellax.js</b>`
+
+        // alert(`
+        // rellax.js - stopped and removed!
+
+        // now my-rellax-analog.js - is running!`);
     }
 }
