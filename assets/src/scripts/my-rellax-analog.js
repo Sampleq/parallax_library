@@ -1,29 +1,38 @@
-function translateOnScroll(array) {
-    const biasedUnits = document.querySelectorAll(array);
+let biasedUnits;
 
+function setSpeedCoeff() {
+    // biasedUnits = document.querySelectorAll(array);
     for (let el of biasedUnits) {
         el.style.transition = '0.033s linear';
         el.style.willChange = 'transform';
+
+        // console.log(el.getAttribute('data-rellax-speed'))
+        // сохраняем значение скорости в свойство speedCoeff каждого el-а - чтобы при скролле только двигать элементы, но не обращаться к DOM
+        if (window.innerWidth <= 425 && el.getAttribute('data-rellax-mobile-speed')) {
+            el.speedCoeff = el.getAttribute('data-rellax-mobile-speed')
+        } else {
+            el.speedCoeff = el.getAttribute('data-rellax-speed')
+        }
+        // set default speedCoeff = 2
+        if (typeof (el.speedCoeff) !== 'string') {
+            el.speedCoeff = 2;
+        }
+        // console.log(typeof (el.speedCoeff));
+        // console.log(el);
     }
+}
+
+function translateOnScroll(array) {
+    biasedUnits = document.querySelectorAll(array);
+
+    setSpeedCoeff();
 
     window.onscroll = () => {
         // console.warn('window.onscroll');
         // console.log(biasedUnits)
 
         for (let el of biasedUnits) {
-            // console.log(el.getAttribute('data-rellax-speed'))
-            let speedCoeff
-            if (window.innerWidth <= 425 && el.getAttribute('data-rellax-mobile-speed')) {
-                speedCoeff = el.getAttribute('data-rellax-mobile-speed')
-            } else {
-                speedCoeff = el.getAttribute('data-rellax-speed')
-            }
-            // set default speedCoeff = 2
-            if (typeof (speedCoeff) !== 'string') {
-                speedCoeff = 2;
-            }
-            // console.log(typeof (speedCoeff));
-            el.style.transform = `translate3d(0, ${(-1.6 * Math.sin(speedCoeff / 10) * window.scrollY) * 0.4}px, 0)`;
+            el.style.transform = `translate3d(0, ${(-Math.sin(1.6 * el.speedCoeff / 10) * window.scrollY) * 0.4}px, 0)`;
         }
     }
 
@@ -34,3 +43,5 @@ function translateOnScroll(array) {
 }
 
 translateOnScroll('.rellax');
+
+window.onresize = setSpeedCoeff;
