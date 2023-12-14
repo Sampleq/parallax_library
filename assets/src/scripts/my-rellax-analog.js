@@ -18,6 +18,11 @@ function translateOnScroll(array) {
             } else {
                 speedCoeff = el.getAttribute('data-rellax-speed')
             }
+            // set default speedCoeff = 2
+            if (typeof (speedCoeff) !== 'string') {
+                speedCoeff = 2;
+            }
+            // console.log(typeof (speedCoeff));
             el.style.transform = `translate3d(0, ${(-1.6 * Math.sin(speedCoeff / 10) * window.scrollY) * 0.4}px, 0)`;
         }
     }

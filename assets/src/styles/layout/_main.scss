@@ -16,7 +16,7 @@
         @include p1();
         line-height: 1.5;
         margin-top: 28rem;
-        mix-blend-mode: exclusion;
+        mix-blend-mode: hard-light;
 
 
         &_2 {
@@ -173,34 +173,34 @@
         }
 
         &_12 {
-            @include circle($_diameter: 37rem, $_bgColor: $beige);
+            @include circle($_diameter: 37rem, $_bgColor: $lightpurple);
 
             @media ($tablet) {
-                @include circle($_diameter: 67rem, $_bgColor: $beige);
+                @include circle($_diameter: 67rem, $_bgColor: $lightpurple);
             }
         }
 
         &_13 {
-            @include circle($_diameter: 25rem, $_bgColor: $beige);
+            @include circle($_diameter: 25rem, $_bgColor: $lightpurple);
 
             @media ($tablet) {
-                @include circle($_diameter: 35rem, $_bgColor: $beige);
+                @include circle($_diameter: 35rem, $_bgColor: $lightpurple);
             }
         }
 
         &_14 {
-            @include circle($_diameter: 28rem, $_bgColor: $beige);
+            @include circle($_diameter: 28rem, $_bgColor: $lightpurple);
         }
 
         &_15 {
-            @include circle($_diameter: 22rem, $_bgColor: $beige);
+            @include circle($_diameter: 22rem, $_bgColor: $lightpurple);
         }
 
         &_16 {
-            @include circle($_diameter: 75rem, $_bgColor: $beige);
+            @include circle($_diameter: 75rem, $_bgColor: $lightpurple);
 
             @media ($tablet) {
-                @include circle($_diameter: 145rem, $_bgColor: $beige);
+                @include circle($_diameter: 145rem, $_bgColor: $lightpurple);
             }
         }
 
