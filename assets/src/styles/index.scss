@@ -8,19 +8,20 @@
     margin: 0 auto;
 }
 
-// 
-// // предотвращение убирания address-bar в мобильных браузерах
-// html {
-//     overflow: hidden;
-// }
 
-// body {
-//     width: 100%;
-//     height: 100%;
-//     position: fixed;
-//     overflow: auto;
-//     -webkit-overflow-scrolling: touch;
-// }
+// предотвращение убирания address-bar в мобильных браузерах
+// html 
+.hidden {
+    overflow: hidden;
+}
 
-// // предотвращение убирания address-bar в мобильных браузерах
-// 
+// body 
+.fixed {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+// предотвращение убирания address-bar в мобильных браузерах

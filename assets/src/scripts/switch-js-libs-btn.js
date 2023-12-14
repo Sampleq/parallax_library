@@ -1,4 +1,6 @@
 const btn = document.querySelector('.btn');
+const btnFixGlith = document.querySelector('.main__btn_fix_glitch');
+
 // const switchableScript = document.getElementById('switchableScript');
 const descr = document.querySelector('.main__desc_3');
 
@@ -59,12 +61,43 @@ btn.onclick = () => {
             btn.innerHTML = `switch to <b>my-rellax-analog.js</b>`;
             descr.innerHTML = `Using <br> rellax.js`;
             descr.classList.toggle('main__desc_3_corr-pos');
+
+
+            btnFixGlith.style.display = 'block';
+            btnFixGlith.onclick = () => {
+
+                document.body.parentNode.classList.toggle('hidden');
+                document.body.classList.toggle('fixed');
+                // window.scrollTo(0, 0);
+                setTimeout(() => {
+                    btnFixGlith.scrollIntoView({ block: "center" });
+                }, 33);
+                rellax.destroy();
+                // Set rellax's wrapper to custom-element (body) instead of the html
+
+                if (!btnFixGlith.innerHTML.includes('Unfix')) {
+                    rellax = new Rellax('.rellax', {
+                        wrapper: 'body'
+                    });
+                    btnFixGlith.innerHTML = 'Unfix addres-tab glitch of rellax.js'
+                } else {
+                    rellax = new Rellax('.rellax');
+                    btnFixGlith.innerHTML = 'Fix addres-tab glitch of rellax.js'
+                }
+            }
             // }, 33);
         };
 
     } else if (currentJSLib.includes('rellax.js')) {
         // alert('already switched forward  - need to finish code for switching back)');
         // document.body.style.backgroundColor = 'green';
+
+        if (btnFixGlith.innerHTML.includes('Unfix')) {
+            document.body.parentNode.classList.remove('hidden');
+            document.body.classList.remove('fixed');
+        }
+        btnFixGlith.style.display = 'none';
+        btnFixGlith.innerHTML = 'Fix addres-tab glitch of rellax.js';
 
         rellax.destroy();
         console.warn('rellax.js - destroyed!');
@@ -82,6 +115,7 @@ btn.onclick = () => {
         descr.innerHTML = `Using <br> my-rellax-analog.js`;
         descr.classList.toggle('main__desc_3_corr-pos');
 
+        btn.scrollIntoView({ block: 'center' });
 
         // alert(`
         // rellax.js - stopped and removed!

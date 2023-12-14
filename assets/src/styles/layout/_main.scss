@@ -14,9 +14,10 @@
 
     &__desc {
         @include p1();
+        color: $cherry;
         line-height: 1.5;
         margin-top: 28rem;
-        mix-blend-mode: hard-light;
+        // mix-blend-mode: hard-light;
 
 
         &_2 {
@@ -116,6 +117,11 @@
 
         &:hover {
             filter: hue-rotate(150deg);
+        }
+
+        &_fix_glitch {
+            margin-top: 5rem;
+            display: none;
         }
     }
 
