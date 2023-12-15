@@ -114,52 +114,87 @@
                 || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
         }
 
-
+        // убрать detect_iOS(), оставить проверку чисто на DeviceOrientationEvent.requestPermission()
         if (detect_iOS()) {
-            const modal = document.createElement('button');
-            modal.innerHTML = `Please, allow acsess to motions to see how <i><b>parallax.js</i></b> works`;
-            modal.classList.add('button-fixed');
-            document.body.appendChild(modal);
+            // https://stackoverflow.com/questions/59886073/how-to-check-motion-orientation-permissionstate-in-ios-12-2-by-javascript
+            DeviceOrientationEvent.requestPermission()
+                .then(response => {
+                    if (response) {
+                        console.log(response);
+                        alert(response);
 
+                        let newScriptTag = document.createElement('script');
+                        newScriptTag.src = './js/js-libs/parallax.min.js';
+                        document.body.appendChild(newScriptTag);
 
+                        setTimeout(() => {
+                            const scenes = document.querySelectorAll('.main__scene');
+                            for (let scene of scenes) {
+                                new Parallax(scene);
+                            }
 
-            // "причесать" условия запуска 
-            // document.addEventListener("DOMContentLoaded", () => {
-            modal.addEventListener('touchend', () => {
-                // запрашиваем разрешение на считывание данных ориентации устройства - после проверки на iOS, т.к. настольный Chrome не знает объекта DeviceOrientationEvent и выдаёт ошибку, прерывая выполнение скрипта
-                DeviceOrientationEvent.requestPermission();
-                console.log('DeviceOrientationEvent.requestPermission();');
+                            new Parallax(document.querySelector('.main__img_misc-cont'));
+                        }, 123);
 
-                let newScriptTag = document.createElement('script');
-                newScriptTag.src = './js/js-libs/parallax.min.js';
-                document.body.appendChild(newScriptTag);
-
-                // "причесать" условия запуска библиотеки после подтверждения разрешения выше
-                setTimeout(() => {
-                    // alert приостанаыливает выполнение скрипта - т.е. пользователь точно ответит на запрос о разрешении доступа, затем закроет alert - и библиотека запустится (или можно сделать запуск по кнопке или перезагружать сайт)
-                    alert(
-                        `Thanks for your choise!`
-                    );
-                    modal.style.display = 'none';
-                    // document.body.addEventListener('touchend', () => {
-                    // if (DeviceOrientationEvent.absolute) {
-                    const scenes = document.querySelectorAll('.main__scene');
-                    for (let scene of scenes) {
-                        new Parallax(scene);
                     }
+                })
+                .catch(function (error) {
+                    console.log("error");
+                    alert("error");
+                    // Trigger modal to ask for permissions
 
-                    new Parallax(document.querySelector('.main__img_misc-cont'));
-                    console.log(
-                        `iOS - new Parallax(document.querySelector('.main__img_misc-cont'))`
-                    );
+                    const modal = document.createElement('button');
+                    modal.innerHTML = `Please, allow acsess to motions to see how <i><b>parallax.js</i></b> works`;
+                    modal.classList.add('button-fixed');
+                    document.body.appendChild(modal);
 
 
 
-                    // }
-                    // }, { once: true });
-                }, 123);
+                    // "причесать" условия запуска 
+                    // document.addEventListener("DOMContentLoaded", () => {
+                    modal.addEventListener('touchend', () => {
+                        // запрашиваем разрешение на считывание данных ориентации устройства - после проверки на iOS, т.к. настольный Chrome не знает объекта DeviceOrientationEvent и выдаёт ошибку, прерывая выполнение скрипта
+                        DeviceOrientationEvent.requestPermission();
+                        console.log('DeviceOrientationEvent.requestPermission();');
 
-            }, { once: true });
+                        let newScriptTag = document.createElement('script');
+                        newScriptTag.src = './js/js-libs/parallax.min.js';
+                        document.body.appendChild(newScriptTag);
+
+                        // "причесать" условия запуска библиотеки после подтверждения разрешения выше
+                        setTimeout(() => {
+                            // alert приостанаыливает выполнение скрипта - т.е. пользователь точно ответит на запрос о разрешении доступа, затем закроет alert - и библиотека запустится (или можно сделать запуск по кнопке или перезагружать сайт)
+                            alert(
+                                `Thanks for your choise!`
+                            );
+                            modal.style.display = 'none';
+                            // document.body.addEventListener('touchend', () => {
+                            // if (DeviceOrientationEvent.absolute) {
+                            const scenes = document.querySelectorAll('.main__scene');
+                            for (let scene of scenes) {
+                                new Parallax(scene);
+                            }
+
+                            new Parallax(document.querySelector('.main__img_misc-cont'));
+                            console.log(
+                                `iOS - new Parallax(document.querySelector('.main__img_misc-cont'))`
+                            );
+
+
+
+                            // }
+                            // }, { once: true });
+                        }, 123);
+
+                    }, { once: true });
+
+                    // $('#askForPermission').modal('toggle')
+                });
+
+
+
+
+
 
         } else {
             let newScriptTag = document.createElement('script');
