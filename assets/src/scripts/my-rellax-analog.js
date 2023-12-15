@@ -26,7 +26,7 @@ function setSpeedCoeff() {
             } else {
                 el.horSpeedCoeff = el.getAttribute('data-rellax-horizontal-speed');
             }
-            console.log(el.horSpeedCoeff);
+            // console.log(el.horSpeedCoeff);
         } else {
 
             if (el.getAttribute('data-rellax-speed')) {
