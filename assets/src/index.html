@@ -125,7 +125,7 @@
                     document.body.appendChild(newScriptTag);
 
                     setTimeout(() => {
-                        document.body.addEventListener('scroll', () => {
+                        document.body.addEventListener('touchend', () => {
                             const scenes = document.querySelectorAll('.main__scene');
                             for (let scene of scenes) {
                                 new Parallax(scene);
@@ -136,7 +136,7 @@
                                 `new Parallax(document.querySelector('.main__img_misc-cont'))`
                             );
                         }, { once: true });
-                    }, 123);
+                    }, 1230);
 
                 }, { once: true });
 
