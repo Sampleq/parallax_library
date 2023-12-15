@@ -13,8 +13,9 @@ const initialJSLib = document.querySelector('[src*="my-rellax-analog"]').src;
 
 let currentJSLib = initialJSLib;
 
-// задаём переменную чтобы мы могли включать/отключать библиотеку rellax.js
+// задаём переменные, чтобы мы могли включать/отключать библиотеки rellax.js
 let rellax;
+let horellax;
 
 btn.onclick = () => {
     if (currentJSLib === initialJSLib) {
@@ -46,8 +47,11 @@ btn.onclick = () => {
             // document.body.style.backgroundColor = 'red';
 
             rellax = new Rellax('.rellax');
-
             console.warn('rellax.js - running!');
+
+            horellax = new Rellax('.horellax', {
+                horizontal: true
+            })
 
             // alert(`
             //     my-rellax-analog.js - stopped and removed!
@@ -73,11 +77,16 @@ btn.onclick = () => {
                     btnFixGlith.scrollIntoView({ block: "center" });
                 }, 33);
                 rellax.destroy();
+                horellax.destroy();
                 // Set rellax's wrapper to custom-element (body) instead of the html
 
                 if (!btnFixGlith.innerHTML.includes('Unfix')) {
                     rellax = new Rellax('.rellax', {
                         wrapper: 'body'
+                    });
+                    horellax = new Rellax('.horellax', {
+                        wrapper: 'body',
+                        horizontal: true
                     });
                     btnFixGlith.innerHTML = 'Unfix addres-tab glitch of rellax.js'
                 } else {
@@ -100,6 +109,7 @@ btn.onclick = () => {
         btnFixGlith.innerHTML = 'Fix addres-tab glitch of rellax.js';
 
         rellax.destroy();
+        horellax.destroy();
         console.warn('rellax.js - destroyed!');
         // console.log(document.querySelector('[src="./js/js-libs/rellax.js"]'));
         document.querySelector('[src="./js/js-libs/rellax.js"]').remove();
