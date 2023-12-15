@@ -125,17 +125,17 @@
                     document.body.appendChild(newScriptTag);
 
                     setTimeout(() => {
-                        // document.body.addEventListener('scroll', () => {
-                        const scenes = document.querySelectorAll('.main__scene');
-                        for (let scene of scenes) {
-                            new Parallax(scene);
-                        }
+                        document.body.addEventListener('scroll', () => {
+                            const scenes = document.querySelectorAll('.main__scene');
+                            for (let scene of scenes) {
+                                new Parallax(scene);
+                            }
 
-                        new Parallax(document.querySelector('.main__img_misc-cont'));
-                        console.log(
-                            `new Parallax(document.querySelector('.main__img_misc-cont'))`
-                        );
-                        // }, { once: true })
+                            new Parallax(document.querySelector('.main__img_misc-cont'));
+                            console.log(
+                                `new Parallax(document.querySelector('.main__img_misc-cont'))`
+                            );
+                        }, { once: true });
                     }, 123);
 
                 }, { once: true });
