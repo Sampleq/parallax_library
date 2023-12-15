@@ -99,7 +99,10 @@
     <!-- <script src="./js/js-libs/rellax.js"></script> -->
     <!-- <script src="./js/js-libs/parallax.js"></script> не работает(-->
     <script>
-        DeviceOrientationEvent.requestPermission();
+        document.body.addEventListener('click', () => {
+            DeviceOrientationEvent.requestPermission();
+            console.log('DeviceOrientationEvent.requestPermission();')
+        });
     </script>
     <script src="./js/js-libs/parallax.min.js"></script>
 
