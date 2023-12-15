@@ -116,25 +116,47 @@
 
 
             if (detect_iOS()) {
-                DeviceOrientationEvent.requestPermission();
-                console.log('DeviceOrientationEvent.requestPermission();');
+                document.body.addEventListener('touchend', () => {
+                    DeviceOrientationEvent.requestPermission();
+                    console.log('DeviceOrientationEvent.requestPermission();');
+
+                    let newScriptTag = document.createElement('script');
+                    newScriptTag.src = './js/js-libs/parallax.min.js';
+                    document.body.appendChild(newScriptTag);
+
+                    setTimeout(() => {
+                        // document.body.addEventListener('scroll', () => {
+                        const scenes = document.querySelectorAll('.main__scene');
+                        for (let scene of scenes) {
+                            new Parallax(scene);
+                        }
+
+                        new Parallax(document.querySelector('.main__img_misc-cont'));
+                        console.log(
+                            `new Parallax(document.querySelector('.main__img_misc-cont'))`
+                        );
+                        // }, { once: true })
+                    }, 123);
+
+                }, { once: true });
+
+            } else {
+                let newScriptTag = document.createElement('script');
+                newScriptTag.src = './js/js-libs/parallax.min.js';
+                document.body.appendChild(newScriptTag);
+
+                setTimeout(() => {
+                    const scenes = document.querySelectorAll('.main__scene');
+                    for (let scene of scenes) {
+                        new Parallax(scene);
+                    }
+
+                    new Parallax(document.querySelector('.main__img_misc-cont'));
+                    console.log(
+                        `new Parallax(document.querySelector('.main__img_misc-cont'))`
+                    );
+                }, 123);
             }
-            let newScriptTag = document.createElement('script');
-            newScriptTag.src = './js/js-libs/parallax.min.js';
-            document.body.appendChild(newScriptTag);
-
-            setTimeout(() => {
-                const scenes = document.querySelectorAll('.main__scene');
-                for (let scene of scenes) {
-                    new Parallax(scene);
-                }
-
-                new Parallax(document.querySelector('.main__img_misc-cont'));
-                console.log(
-                    `new Parallax(document.querySelector('.main__img_misc-cont'))`
-                );
-            }, 123);
-
         }, { once: true });
 
     </script>
