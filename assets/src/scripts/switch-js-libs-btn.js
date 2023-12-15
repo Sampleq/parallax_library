@@ -27,7 +27,7 @@ btn.onclick = () => {
         for (let el of biasedUnits) {
             el.style.transition = 'unset';
             el.style.willChange = 'unset';
-            el.style.transform = `translate3d(0, 0, 0)`;
+            el.style.removeProperty(`transform`);
         }
         window.onscroll = undefined;
 
