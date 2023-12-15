@@ -116,12 +116,13 @@
 
         // убрать detect_iOS(), оставить проверку чисто на DeviceOrientationEvent.requestPermission()
         if (detect_iOS()) {
-            // https://stackoverflow.com/questions/59886073/how-to-check-motion-orientation-permissionstate-in-ios-12-2-by-javascript
+            //!OK https://stackoverflow.com/questions/59886073/how-to-check-motion-orientation-permissionstate-in-ios-12-2-by-javascript
+            // https://leemartin.dev/how-to-request-device-motion-and-orientation-permission-in-ios-13-74fc9d6cd140
             DeviceOrientationEvent.requestPermission()
                 .then(response => {
                     if (response) {
                         console.log(response);
-                        alert(response);
+                        // alert(response);
 
                         let newScriptTag = document.createElement('script');
                         newScriptTag.src = './js/js-libs/parallax.min.js';
@@ -140,7 +141,7 @@
                 })
                 .catch(function (error) {
                     console.log("error");
-                    alert("error");
+                    // alert("error");
                     // Trigger modal to ask for permissions
 
                     const modal = document.createElement('button');
