@@ -99,12 +99,46 @@
     <!-- <script src="./js/js-libs/rellax.js"></script> -->
     <!-- <script src="./js/js-libs/parallax.js"></script> не работает(-->
     <script>
-        document.body.addEventListener('click', () => {
-            DeviceOrientationEvent.requestPermission();
-            console.log('DeviceOrientationEvent.requestPermission();')
-        });
+        document.addEventListener("DOMContentLoaded", () => {
+            // document.body.addEventListener('touchend', () => {
+            function detect_iOS() {
+                return /* создаём массив с перечислением названий устройств на iOS */[
+                    'iPad Simulator',
+                    'iPhone Simulator',
+                    'iPod Simulator',
+                    'iPad',
+                    'iPhone',
+                    'iPod'
+                ].includes(navigator.platform)
+                    // iPad on iOS 13 detection
+                    || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+            }
+
+
+            if (detect_iOS()) {
+                DeviceOrientationEvent.requestPermission();
+                console.log('DeviceOrientationEvent.requestPermission();');
+            }
+            let newScriptTag = document.createElement('script');
+            newScriptTag.src = './js/js-libs/parallax.min.js';
+            document.body.appendChild(newScriptTag);
+
+            setTimeout(() => {
+                const scenes = document.querySelectorAll('.main__scene');
+                for (let scene of scenes) {
+                    new Parallax(scene);
+                }
+
+                new Parallax(document.querySelector('.main__img_misc-cont'));
+                console.log(
+                    `new Parallax(document.querySelector('.main__img_misc-cont'))`
+                );
+            }, 123);
+
+        }, { once: true });
+
     </script>
-    <script src="./js/js-libs/parallax.min.js"></script>
+    <!-- <script src="./js/js-libs/parallax.min.js"></script> -->
 
 
     <!-- <script>
@@ -131,15 +165,15 @@
         // var scene = document.getElementById('scene');
         // var parallaxInstance = new Parallax(scene);
 
-        // обращаемся циклом ко всем оберткам (.main__scene) шариков и передаём их в функции Parallax. Библиотека parallax.js двигает детей (с html аттрибутом data-depth="-1.8") контейнера который передали аргументом в функцию Parallax. 
-        // применяем именно к оберткам (.main__scene) т.к. библиотека parallax.js  задаёт инлайновое свойство position:relative детям, а в нашем конкретном случае нужно чтобы у .main__scene было position:absolute. 
+        // обращаемся циклом ко всем оберткам (.main__scene) шариков и передаём их в функции Parallax. Библиотека parallax.js двигает детей (с html аттрибутом data-depth="-1.8") контейнера который передали аргументом в функцию Parallax.
+        // применяем именно к оберткам (.main__scene) т.к. библиотека parallax.js  задаёт инлайновое свойство position:relative детям, а в нашем конкретном случае нужно чтобы у .main__scene было position:absolute.
         //  (Чтобы запускать один экземпляр функции (и двигать множество детей , а не запускать много функций и двигать по одному ребёнку) можно при желании переписать разметку  html и  использовать в css !important для position, top , right, left:unset, чтобы переопределять инлайновый стили которые задаёт библиотека parallax.js)
-        const scenes = document.querySelectorAll('.main__scene');
-        for (let scene of scenes) {
-            new Parallax(scene);
-        }
+        // const scenes = document.querySelectorAll('.main__scene');
+        // for (let scene of scenes) {
+        //     new Parallax(scene);
+        // }
 
-        new Parallax(document.querySelector('.main__img_misc-cont'));
+        // new Parallax(document.querySelector('.main__img_misc-cont'));
 
     </script>
 
