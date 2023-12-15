@@ -22,11 +22,12 @@ btn.onclick = () => {
         // if (currentJSLib.includes('my-rellax-analog')) {
         // document.body.style.backgroundColor = 'red';
 
-        const biasedUnits = document.querySelectorAll('.rellax');
+        const biasedUnits = document.querySelectorAll('.rellax, .horellax');
 
         for (let el of biasedUnits) {
             el.style.transition = 'unset';
             el.style.willChange = 'unset';
+            el.style.transform = `translate3d(0, 0, 0)`;
         }
         window.onscroll = undefined;
 
@@ -88,10 +89,13 @@ btn.onclick = () => {
                         wrapper: 'body',
                         horizontal: true
                     });
-                    btnFixGlith.innerHTML = 'Unfix addres-tab glitch of rellax.js'
+                    btnFixGlith.innerHTML = 'Unfix mob. addres-tab glitch of rellax.js'
                 } else {
                     rellax = new Rellax('.rellax');
-                    btnFixGlith.innerHTML = 'Fix addres-tab glitch of rellax.js'
+                    horellax = new Rellax('.horellax', {
+                        horizontal: true
+                    });
+                    btnFixGlith.innerHTML = 'Fix mob. addres-tab glitch of rellax.js'
                 }
             }
             // }, 33);
