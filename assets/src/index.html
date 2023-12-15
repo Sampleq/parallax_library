@@ -99,53 +99,50 @@
     <!-- <script src="./js/js-libs/rellax.js"></script> -->
     <!-- <script src="./js/js-libs/parallax.js"></script> не работает(-->
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // document.body.addEventListener('touchend', () => {
-            function detect_iOS() {
-                return /* создаём массив с перечислением названий устройств на iOS */[
-                    'iPad Simulator',
-                    'iPhone Simulator',
-                    'iPod Simulator',
-                    'iPad',
-                    'iPhone',
-                    'iPod'
-                ].includes(navigator.platform)
-                    // iPad on iOS 13 detection
-                    || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
-            }
+        // document.addEventListener("DOMContentLoaded", () => {
+        // document.body.addEventListener('touchend', () => {
+        function detect_iOS() {
+            return /* создаём массив с перечислением названий устройств на iOS */[
+                'iPad Simulator',
+                'iPhone Simulator',
+                'iPod Simulator',
+                'iPad',
+                'iPhone',
+                'iPod'
+            ].includes(navigator.platform)
+                // iPad on iOS 13 detection
+                || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+        }
 
 
-            if (detect_iOS()) {
-                document.body.addEventListener('touchend', () => {
-                    DeviceOrientationEvent.requestPermission();
-                    console.log('DeviceOrientationEvent.requestPermission();');
+        if (detect_iOS()) {
+            const modal = document.createElement('button');
+            modal.innerHTML = `Please, allow acsess to motions to see how <i><b>parallax.js</i></b> works`;
+            modal.classList.add('button-fixed');
+            document.body.appendChild(modal);
 
-                    let newScriptTag = document.createElement('script');
-                    newScriptTag.src = './js/js-libs/parallax.min.js';
-                    document.body.appendChild(newScriptTag);
 
-                    setTimeout(() => {
-                        document.body.addEventListener('touchend', () => {
-                            const scenes = document.querySelectorAll('.main__scene');
-                            for (let scene of scenes) {
-                                new Parallax(scene);
-                            }
 
-                            new Parallax(document.querySelector('.main__img_misc-cont'));
-                            console.log(
-                                `new Parallax(document.querySelector('.main__img_misc-cont'))`
-                            );
-                        }, { once: true });
-                    }, 123);
+            // "причесать" условия запуска 
+            // document.addEventListener("DOMContentLoaded", () => {
+            modal.addEventListener('touchend', () => {
+                // запрашиваем разрешение на считывание данных ориентации устройства - после проверки на iOS, т.к. настольный Chrome не знает объекта DeviceOrientationEvent и выдаёт ошибку, прерывая выполнение скрипта
+                DeviceOrientationEvent.requestPermission();
+                console.log('DeviceOrientationEvent.requestPermission();');
 
-                }, { once: true });
-
-            } else {
                 let newScriptTag = document.createElement('script');
                 newScriptTag.src = './js/js-libs/parallax.min.js';
                 document.body.appendChild(newScriptTag);
 
+                // "причесать" условия запуска библиотеки после подтверждения разрешения выше
                 setTimeout(() => {
+                    // alert приостанаыливает выполнение скрипта - т.е. пользователь точно ответит на запрос о разрешении доступа, затем закроет alert - и библиотека запустится (или можно сделать запуск по кнопке или перезагружать сайт)
+                    alert(
+                        `Thanks for your choise!`
+                    );
+                    modal.style.display = 'none';
+                    // document.body.addEventListener('touchend', () => {
+                    // if (DeviceOrientationEvent.absolute) {
                     const scenes = document.querySelectorAll('.main__scene');
                     for (let scene of scenes) {
                         new Parallax(scene);
@@ -153,11 +150,35 @@
 
                     new Parallax(document.querySelector('.main__img_misc-cont'));
                     console.log(
-                        `new Parallax(document.querySelector('.main__img_misc-cont'))`
+                        `iOS - new Parallax(document.querySelector('.main__img_misc-cont'))`
                     );
+
+
+
+                    // }
+                    // }, { once: true });
                 }, 123);
-            }
-        }, { once: true });
+
+            }, { once: true });
+
+        } else {
+            let newScriptTag = document.createElement('script');
+            newScriptTag.src = './js/js-libs/parallax.min.js';
+            document.body.appendChild(newScriptTag);
+
+            setTimeout(() => {
+                const scenes = document.querySelectorAll('.main__scene');
+                for (let scene of scenes) {
+                    new Parallax(scene);
+                }
+
+                new Parallax(document.querySelector('.main__img_misc-cont'));
+                console.log(
+                    `new Parallax(document.querySelector('.main__img_misc-cont'))`
+                );
+            }, 123);
+        }
+        // }, { once: true });
 
     </script>
     <!-- <script src="./js/js-libs/parallax.min.js"></script> -->
