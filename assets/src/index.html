@@ -100,6 +100,7 @@
     <!-- <script src="./js/js-libs/parallax.js"></script> не работает( , а parallax.min.js - работает -->
 
     <script src="./js/js-libs/parallax.min.js"></script>
+    <!-- warnings in console on iOS - but code is shorter than create script tag with JS -->
 
     <script>
         // document.addEventListener("DOMContentLoaded", () => {
@@ -126,25 +127,18 @@
                         console.log(response);
                         // alert(response);
 
-                        // let newScriptTag = document.createElement('script');
-                        // newScriptTag.src = './js/js-libs/parallax.min.js';
-                        // document.body.appendChild(newScriptTag);
-
-                        // newScriptTag.onload = () => {
                         const scenes = document.querySelectorAll('.main__scene');
                         for (let scene of scenes) {
                             new Parallax(scene);
                         }
 
                         new Parallax(document.querySelector('.main__img_misc-cont'));
-                        // }
 
                     }
                 })
                 .catch(function (error) {
                     console.log("error");
                     // alert("error");
-                    // Trigger modal to ask for permissions
 
                     const modal = document.createElement('button');
                     modal.innerHTML = `Please, allow access to Motion to see how <i><b>parallax.js</i></b> works`;
@@ -152,20 +146,12 @@
                     document.body.appendChild(modal);
 
 
-
-                    // "причесать" условия запуска 
-                    // document.addEventListener("DOMContentLoaded", () => {
                     modal.addEventListener('touchend', () => {
                         // запрашиваем разрешение на считывание данных ориентации устройства - после проверки на iOS, т.к. настольный Chrome не знает объекта DeviceOrientationEvent и выдаёт ошибку, прерывая выполнение скрипта
                         DeviceOrientationEvent.requestPermission();
                         console.log('DeviceOrientationEvent.requestPermission();');
 
-                        // let newScriptTag = document.createElement('script');
-                        // newScriptTag.src = './js/js-libs/parallax.min.js';
-                        // document.body.appendChild(newScriptTag);
-
-                        // newScriptTag.onload = () => {
-                        // alert приостанаыливает выполнение скрипта - т.е. пользователь точно ответит на запрос о разрешении доступа, затем закроет alert - и библиотека запустится (или можно сделать запуск по кнопке или перезагружать )
+                        // alert приостанавливает выполнение скрипта - т.е. пользователь точно ответит на запрос о разрешении доступа, затем закроет alert - и библиотека запустится (или можно сделать запуск по кнопке или перезагружать )
                         alert(
                             `Thanks for your choise!`
                         );
@@ -175,8 +161,6 @@
                         // document.body.ontouchstart = () => { window.location.reload(); }
 
                         modal.style.display = 'none';
-                        // document.body.addEventListener('touchend', () => {
-                        // if (DeviceOrientationEvent.absolute) {
                         const scenes = document.querySelectorAll('.main__scene');
                         for (let scene of scenes) {
                             new Parallax(scene);
@@ -184,10 +168,8 @@
 
                         new Parallax(document.querySelector('.main__img_misc-cont'));
                         console.log(
-                            `iOS - new Parallax(document.querySelector('.main__img_misc-cont'))`
+                            `iOS - new Parallax(...)`
                         );
-
-                        // }
 
                     }, { once: true });
 
@@ -195,12 +177,6 @@
 
         } else {
 
-            // let newScriptTag = document.createElement('script');
-            // newScriptTag.src = './js/js-libs/parallax.min.js';
-            // document.body.appendChild(newScriptTag);
-
-
-            // newScriptTag.onload = () => {
             const scenes = document.querySelectorAll('.main__scene');
             for (let scene of scenes) {
                 new Parallax(scene);
@@ -210,10 +186,8 @@
             console.log(
                 `new Parallax(document.querySelector('.main__img_misc-cont'))`
             );
-            // }
         }
         // });
-
     </script>
     <!-- <script src="./js/js-libs/parallax.min.js"></script> -->
 
