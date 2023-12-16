@@ -62,6 +62,7 @@
   ],
   "externals": {
     "./**/rellax.js": false,
+    "./**/rellax.min-from-demo-site.js": false,
     "./**/parallax.js": false,
     "./**/parallax.min.js": false
   },
