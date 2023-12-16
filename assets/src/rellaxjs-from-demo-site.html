@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parallax rellax libraries</title>
+    <title>Rellax.js from demo site</title>
     <link rel="stylesheet" href="./styles/index.scss">
     <link rel="icon" type="image/png" href="./images/favicon-128.png" sizes="128x128">
     <link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon-180.png">
@@ -15,6 +15,7 @@
         <div class="main__wrapper wrapper">
             <div class="main__circle main__circle_1 rellax" data-rellax-speed="-1"></div>
             <h1 class="main__title">Scroll me!</h1>
+            <span style="color: white; font-size: 2rem;">Rellax.js from demo site</span>
 
             <p class="rellax main__desc" data-rellax-speed="-1.5">
                 <span class="horellax" data-rellax-horizontal-speed="-17" data-rellax-mobile-horizontal-speed="-20"
@@ -30,16 +31,15 @@
             </div>
 
             <p class="rellax main__desc main__desc_2" data-rellax-speed="0.5">Parallax demo</p>
-            <p class="rellax main__desc main__desc_3" data-rellax-speed="-3.5">Using <br>my-rellax-analog.js</p>
+            <p class="rellax main__desc main__desc_3" data-rellax-speed="-3.5">Using <br>Rellax.js from demo site</p>
 
 
-            <button class="btn main__btn">Switch to <b>rellax.js</b></button>
+            <!-- <button class="btn main__btn">Switch to <b>rellax.js</b></button> -->
 
-            <button class="btn main__btn main__btn_fix_glitch">Fix mob. addres-tab glitch of rellax.js</button>
+            <!-- <button class="btn main__btn main__btn_fix_glitch">Fix mob. addres-tab glitch of rellax.js</button> -->
 
 
-            <a href="rellaxjs-from-demo-site.html" class="main__btn main__btn_a">Go to page with Rellax.js from demo
-                site</a>
+            <a href="./index.html" class="main__btn main__btn_a">Go to page with <b> my-rellax-analog.js</b></a>
 
         </div>
 
@@ -100,9 +100,21 @@
     <!-- <script src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script> -->
 
-    <!-- <script src="./js/js-libs/rellax.js"></script> -->
-    <!-- <script src="./js/js-libs/parallax.js"></script> не работает( , а parallax.min.js - работает -->
+    <script src="./js/js-libs/rellax.min-from-demo-site.js"></script>
 
+    <script>
+        rellax = new Rellax('.rellax');
+        console.warn('rellax.min-from-demo-site.js - running!');
+
+        horellax = new Rellax('.horellax', {
+            horizontal: true
+        })
+    </script>
+
+
+
+
+    <!-- <script src="./js/js-libs/parallax.js"></script> не работает( , а parallax.min.js - работает -->
     <script src="./js/js-libs/parallax.min.js"></script>
     <!-- warnings in console on iOS - but code is shorter than create script tag with JS -->
 
@@ -203,10 +215,10 @@
     </script> -->
 
     <!-- подключаем свой аналог библиотеки Rellax -->
-    <script src="./scripts/my-rellax-analog.js"></script>
+    <!-- <script src="./scripts/my-rellax-analog.js"></script> -->
 
 
-    <script src="./scripts/switch-js-libs-btn.js"></script>
+    <!-- <script src="./scripts/switch-js-libs-btn.js"></script> -->
 
 
     <div class="button_up" id="btn_up"></div>
