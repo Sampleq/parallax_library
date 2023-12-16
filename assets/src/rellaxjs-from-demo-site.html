@@ -15,15 +15,18 @@
         <div class="main__wrapper wrapper">
             <div class="main__circle main__circle_1 rellax" data-rellax-speed="-1"></div>
             <h1 class="main__title">Scroll me!</h1>
-            <span style="color: white; font-size: 2rem;">Rellax.js from demo site</span>
+            <span style="color: white; font-size: 2rem;">Rellax.js from demo site <br> <i>no mobile address-tab
+                    glitch, but
+                    <br>no horizontal scroll</i>
+            </span>
 
             <p class="rellax main__desc" data-rellax-speed="-1.5">
                 <span class="horellax" data-rellax-horizontal-speed="-17" data-rellax-mobile-horizontal-speed="-20"
-                    data-rellax-vertical-scroll-axis="x">Cool</span>
+                    data-rellax-vertical-scroll-axis="x" style="left: 0">Cool</span>
                 <span class="horellax" data-rellax-horizontal-speed="17" data-rellax-mobile-horizontal-speed="15"
-                    data-rellax-vertical-scroll-axis="x">JavaScript</span>
+                    data-rellax-vertical-scroll-axis="x" style="left: 0">JavaScript</span>
                 <span class="horellax" data-rellax-horizontal-speed="-27" data-rellax-mobile-horizontal-speed="-29"
-                    data-rellax-vertical-scroll-axis="x">libraries</span>
+                    data-rellax-vertical-scroll-axis="x" style="left: 0">libraries</span>
             </p>
 
             <div class="main__img-cont">
@@ -106,9 +109,14 @@
         rellax = new Rellax('.rellax');
         console.warn('rellax.min-from-demo-site.js - running!');
 
-        horellax = new Rellax('.horellax', {
-            horizontal: true
-        })
+        horellax = new Rellax('.horellax'
+            , {
+                horizontal: true
+                ,
+                //     //Disable vertical Parallax Scrolling
+                vertical: false
+            }
+        )
     </script>
 
 
