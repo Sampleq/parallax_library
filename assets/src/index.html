@@ -106,7 +106,8 @@
         // document.addEventListener("DOMContentLoaded", () => {
 
         // проверка на поддержку DeviceOrientationEvent.requestPermission()
-        if (DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function') {
+        //  only if (typeof DeviceOrientationEvent.requestPermission === 'function')doesn't work in Safari Version 15.6.1 (17613.3.9.1.16) - ReferenceError: Can't find variable: DeviceOrientationEvent . Chrome, Firefox - OK
+        if (typeof DeviceMotionEvent !== "undefined" && typeof DeviceOrientationEvent.requestPermission === 'function') {
             //!OK https://stackoverflow.com/questions/59886073/how-to-check-motion-orientation-permissionstate-in-ios-12-2-by-javascript
             // https://leemartin.dev/how-to-request-device-motion-and-orientation-permission-in-ios-13-74fc9d6cd140
             DeviceOrientationEvent.requestPermission()
