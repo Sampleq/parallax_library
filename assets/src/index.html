@@ -104,21 +104,9 @@
 
     <script>
         // document.addEventListener("DOMContentLoaded", () => {
-        function detect_iOS() {
-            return /* создаём массив с перечислением названий устройств на iOS */[
-                'iPad Simulator',
-                'iPhone Simulator',
-                'iPod Simulator',
-                'iPad',
-                'iPhone',
-                'iPod'
-            ].includes(navigator.platform)
-                // iPad on iOS 13 detection
-                || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
-        }
 
-        // убрать detect_iOS(), оставить проверку чисто на DeviceOrientationEvent.requestPermission()
-        if (detect_iOS()) {
+        // проверка на поддержку DeviceOrientationEvent.requestPermission()
+        if (DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function') {
             //!OK https://stackoverflow.com/questions/59886073/how-to-check-motion-orientation-permissionstate-in-ios-12-2-by-javascript
             // https://leemartin.dev/how-to-request-device-motion-and-orientation-permission-in-ios-13-74fc9d6cd140
             DeviceOrientationEvent.requestPermission()
@@ -133,7 +121,6 @@
                         }
 
                         new Parallax(document.querySelector('.main__img_misc-cont'));
-
                     }
                 })
                 .catch(function (error) {
@@ -145,9 +132,8 @@
                     modal.classList.add('button-fixed');
                     document.body.appendChild(modal);
 
-
                     modal.addEventListener('touchend', () => {
-                        // запрашиваем разрешение на считывание данных ориентации устройства - после проверки на iOS, т.к. настольный Chrome не знает объекта DeviceOrientationEvent и выдаёт ошибку, прерывая выполнение скрипта
+                        // запрашиваем разрешение на считывание данных ориентации устройства - после проверки поддержку DeviceOrientationEvent, т.к. настольный Chrome не знает объекта DeviceOrientationEvent и выдаёт ошибку, прерывая выполнение скрипта
                         DeviceOrientationEvent.requestPermission();
                         console.log('DeviceOrientationEvent.requestPermission();');
 
@@ -156,8 +142,7 @@
                             `Thanks for your choise!`
                         );
 
-                        // перезагрузка происходит независимо от разрешения пользователя доступа к moution - нет смысла просто перезагружать.
-                        // window.location.reload();
+                        // перезагрузка происходит независимо от разрешения пользователя доступа к moution - нет смысла просто перезагружать - перезагружаем по касанию - но если это была перемотка - страница визуально дёргается. Можно использовать событие гироскопа.
                         // document.body.ontouchstart = () => { window.location.reload(); }
 
                         modal.style.display = 'none';
@@ -167,9 +152,7 @@
                         }
 
                         new Parallax(document.querySelector('.main__img_misc-cont'));
-                        console.log(
-                            `iOS - new Parallax(...)`
-                        );
+                        console.log(`iOS - new Parallax(...)`);
 
                     }, { once: true });
 
@@ -189,12 +172,6 @@
         }
         // });
     </script>
-    <!-- <script src="./js/js-libs/parallax.min.js"></script> -->
-
-
-    <!-- <script>
-        var rellax = new Rellax('.rellax');
-    </script> -->
 
     <!-- убираем скрытие address-bar в мобильных браузерах - через body   position: fixed; и библиотекой Rellax смотрим за скроллом body.
     Без этого на iPhone (iOS 15.7.7 15.3.1) глюк - при появлении/скрытии address-bar изменяется положение элементов (translateY), смещаемых с помощью  Rellax. Такой же глюк присутствует на https://coolbackgrounds.io/ . 
@@ -207,7 +184,7 @@
         });
     </script> -->
 
-    <script>
+    <!-- <script>
         // обращаемся циклом ко всем оберткам (.main__scene) шариков и передаём их в функции Parallax. Библиотека parallax.js двигает детей (с html аттрибутом data-depth="-1.8") контейнера который передали аргументом в функцию Parallax.
         // применяем именно к оберткам (.main__scene) т.к. библиотека parallax.js  задаёт инлайновое свойство position:relative детям, а в нашем конкретном случае нужно чтобы у .main__scene было position:absolute.
         //  (Чтобы запускать один экземпляр функции (и двигать множество детей , а не запускать много функций и двигать по одному ребёнку) можно при желании переписать разметку  html и  использовать в css !important для position, top , right, left:unset, чтобы переопределять инлайновый стили которые задаёт библиотека parallax.js)
@@ -218,7 +195,7 @@
 
         // new Parallax(document.querySelector('.main__img_misc-cont'));
 
-    </script>
+    </script> -->
 
     <!-- подключаем свой аналог библиотеки Rellax -->
     <script src="./scripts/my-rellax-analog.js"></script>
