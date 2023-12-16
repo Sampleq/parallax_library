@@ -97,10 +97,9 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script> -->
 
     <!-- <script src="./js/js-libs/rellax.js"></script> -->
-    <!-- <script src="./js/js-libs/parallax.js"></script> не работает(-->
+    <!-- <script src="./js/js-libs/parallax.js"></script> не работает( , а parallax.min.js - работает -->
     <script>
         // document.addEventListener("DOMContentLoaded", () => {
-        // document.body.addEventListener('touchend', () => {
         function detect_iOS() {
             return /* создаём массив с перечислением названий устройств на iOS */[
                 'iPad Simulator',
@@ -145,7 +144,7 @@
                     // Trigger modal to ask for permissions
 
                     const modal = document.createElement('button');
-                    modal.innerHTML = `Please, allow acsess to motion to see how <i><b>parallax.js</i></b> works`;
+                    modal.innerHTML = `Please, allow acsess to Motion to see how <i><b>parallax.js</i></b> works`;
                     modal.classList.add('button-fixed');
                     document.body.appendChild(modal);
 
@@ -163,13 +162,14 @@
                         document.body.appendChild(newScriptTag);
 
                         newScriptTag.onload = () => {
-                            // alert приостанаыливает выполнение скрипта - т.е. пользователь точно ответит на запрос о разрешении доступа, затем закроет alert - и библиотека запустится (или можно сделать запуск по кнопке)
+                            // alert приостанаыливает выполнение скрипта - т.е. пользователь точно ответит на запрос о разрешении доступа, затем закроет alert - и библиотека запустится (или можно сделать запуск по кнопке или перезагружать )
                             alert(
                                 `Thanks for your choise!`
                             );
 
-                            // перезагрузка происходит независимо от разрешения пользователя доступа к moution - нет смысла перезагружать.
+                            // перезагрузка происходит независимо от разрешения пользователя доступа к moution - нет смысла просто перезагружать.
                             // window.location.reload();
+                            // document.body.ontouchstart = () => { window.location.reload(); }
 
                             modal.style.display = 'none';
                             // document.body.addEventListener('touchend', () => {
@@ -184,21 +184,11 @@
                                 `iOS - new Parallax(document.querySelector('.main__img_misc-cont'))`
                             );
 
-
-
-                            // }
-                            // }, { once: true });
                         }
 
                     }, { once: true });
 
-                    // $('#askForPermission').modal('toggle')
                 });
-
-
-
-
-
 
         } else {
             let newScriptTag = document.createElement('script');
@@ -217,7 +207,7 @@
                 );
             }
         }
-        // }, { once: true });
+        // });
 
     </script>
     <!-- <script src="./js/js-libs/parallax.min.js"></script> -->
@@ -238,15 +228,7 @@
         });
     </script> -->
 
-
-    <!-- <div id="scene">
-        <div data-depth="0.2">My first Layer!</div>
-        <div data-depth="0.6">My second Layer!</div>
-    </div> -->
     <script>
-        // var scene = document.getElementById('scene');
-        // var parallaxInstance = new Parallax(scene);
-
         // обращаемся циклом ко всем оберткам (.main__scene) шариков и передаём их в функции Parallax. Библиотека parallax.js двигает детей (с html аттрибутом data-depth="-1.8") контейнера который передали аргументом в функцию Parallax.
         // применяем именно к оберткам (.main__scene) т.к. библиотека parallax.js  задаёт инлайновое свойство position:relative детям, а в нашем конкретном случае нужно чтобы у .main__scene было position:absolute.
         //  (Чтобы запускать один экземпляр функции (и двигать множество детей , а не запускать много функций и двигать по одному ребёнку) можно при желании переписать разметку  html и  использовать в css !important для position, top , right, left:unset, чтобы переопределять инлайновый стили которые задаёт библиотека parallax.js)
