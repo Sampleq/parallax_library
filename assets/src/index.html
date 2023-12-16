@@ -98,6 +98,9 @@
 
     <!-- <script src="./js/js-libs/rellax.js"></script> -->
     <!-- <script src="./js/js-libs/parallax.js"></script> не работает( , а parallax.min.js - работает -->
+
+    <script src="./js/js-libs/parallax.min.js"></script>
+
     <script>
         // document.addEventListener("DOMContentLoaded", () => {
         function detect_iOS() {
@@ -123,18 +126,18 @@
                         console.log(response);
                         // alert(response);
 
-                        let newScriptTag = document.createElement('script');
-                        newScriptTag.src = './js/js-libs/parallax.min.js';
-                        document.body.appendChild(newScriptTag);
+                        // let newScriptTag = document.createElement('script');
+                        // newScriptTag.src = './js/js-libs/parallax.min.js';
+                        // document.body.appendChild(newScriptTag);
 
-                        newScriptTag.onload = () => {
-                            const scenes = document.querySelectorAll('.main__scene');
-                            for (let scene of scenes) {
-                                new Parallax(scene);
-                            }
-
-                            new Parallax(document.querySelector('.main__img_misc-cont'));
+                        // newScriptTag.onload = () => {
+                        const scenes = document.querySelectorAll('.main__scene');
+                        for (let scene of scenes) {
+                            new Parallax(scene);
                         }
+
+                        new Parallax(document.querySelector('.main__img_misc-cont'));
+                        // }
 
                     }
                 })
@@ -144,7 +147,7 @@
                     // Trigger modal to ask for permissions
 
                     const modal = document.createElement('button');
-                    modal.innerHTML = `Please, allow acsess to Motion to see how <i><b>parallax.js</i></b> works`;
+                    modal.innerHTML = `Please, allow access to Motion to see how <i><b>parallax.js</i></b> works`;
                     modal.classList.add('button-fixed');
                     document.body.appendChild(modal);
 
@@ -157,55 +160,57 @@
                         DeviceOrientationEvent.requestPermission();
                         console.log('DeviceOrientationEvent.requestPermission();');
 
-                        let newScriptTag = document.createElement('script');
-                        newScriptTag.src = './js/js-libs/parallax.min.js';
-                        document.body.appendChild(newScriptTag);
+                        // let newScriptTag = document.createElement('script');
+                        // newScriptTag.src = './js/js-libs/parallax.min.js';
+                        // document.body.appendChild(newScriptTag);
 
-                        newScriptTag.onload = () => {
-                            // alert приостанаыливает выполнение скрипта - т.е. пользователь точно ответит на запрос о разрешении доступа, затем закроет alert - и библиотека запустится (или можно сделать запуск по кнопке или перезагружать )
-                            alert(
-                                `Thanks for your choise!`
-                            );
+                        // newScriptTag.onload = () => {
+                        // alert приостанаыливает выполнение скрипта - т.е. пользователь точно ответит на запрос о разрешении доступа, затем закроет alert - и библиотека запустится (или можно сделать запуск по кнопке или перезагружать )
+                        alert(
+                            `Thanks for your choise!`
+                        );
 
-                            // перезагрузка происходит независимо от разрешения пользователя доступа к moution - нет смысла просто перезагружать.
-                            // window.location.reload();
-                            // document.body.ontouchstart = () => { window.location.reload(); }
+                        // перезагрузка происходит независимо от разрешения пользователя доступа к moution - нет смысла просто перезагружать.
+                        // window.location.reload();
+                        // document.body.ontouchstart = () => { window.location.reload(); }
 
-                            modal.style.display = 'none';
-                            // document.body.addEventListener('touchend', () => {
-                            // if (DeviceOrientationEvent.absolute) {
-                            const scenes = document.querySelectorAll('.main__scene');
-                            for (let scene of scenes) {
-                                new Parallax(scene);
-                            }
-
-                            new Parallax(document.querySelector('.main__img_misc-cont'));
-                            console.log(
-                                `iOS - new Parallax(document.querySelector('.main__img_misc-cont'))`
-                            );
-
+                        modal.style.display = 'none';
+                        // document.body.addEventListener('touchend', () => {
+                        // if (DeviceOrientationEvent.absolute) {
+                        const scenes = document.querySelectorAll('.main__scene');
+                        for (let scene of scenes) {
+                            new Parallax(scene);
                         }
+
+                        new Parallax(document.querySelector('.main__img_misc-cont'));
+                        console.log(
+                            `iOS - new Parallax(document.querySelector('.main__img_misc-cont'))`
+                        );
+
+                        // }
 
                     }, { once: true });
 
                 });
 
         } else {
-            let newScriptTag = document.createElement('script');
-            newScriptTag.src = './js/js-libs/parallax.min.js';
-            document.body.appendChild(newScriptTag);
 
-            newScriptTag.onload = () => {
-                const scenes = document.querySelectorAll('.main__scene');
-                for (let scene of scenes) {
-                    new Parallax(scene);
-                }
+            // let newScriptTag = document.createElement('script');
+            // newScriptTag.src = './js/js-libs/parallax.min.js';
+            // document.body.appendChild(newScriptTag);
 
-                new Parallax(document.querySelector('.main__img_misc-cont'));
-                console.log(
-                    `new Parallax(document.querySelector('.main__img_misc-cont'))`
-                );
+
+            // newScriptTag.onload = () => {
+            const scenes = document.querySelectorAll('.main__scene');
+            for (let scene of scenes) {
+                new Parallax(scene);
             }
+
+            new Parallax(document.querySelector('.main__img_misc-cont'));
+            console.log(
+                `new Parallax(document.querySelector('.main__img_misc-cont'))`
+            );
+            // }
         }
         // });
 
