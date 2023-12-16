@@ -128,14 +128,14 @@
                         newScriptTag.src = './js/js-libs/parallax.min.js';
                         document.body.appendChild(newScriptTag);
 
-                        setTimeout(() => {
+                        newScriptTag.onload = () => {
                             const scenes = document.querySelectorAll('.main__scene');
                             for (let scene of scenes) {
                                 new Parallax(scene);
                             }
 
                             new Parallax(document.querySelector('.main__img_misc-cont'));
-                        }, 123);
+                        }
 
                     }
                 })
@@ -145,7 +145,7 @@
                     // Trigger modal to ask for permissions
 
                     const modal = document.createElement('button');
-                    modal.innerHTML = `Please, allow acsess to motions to see how <i><b>parallax.js</i></b> works`;
+                    modal.innerHTML = `Please, allow acsess to motion to see how <i><b>parallax.js</i></b> works`;
                     modal.classList.add('button-fixed');
                     document.body.appendChild(modal);
 
@@ -162,12 +162,15 @@
                         newScriptTag.src = './js/js-libs/parallax.min.js';
                         document.body.appendChild(newScriptTag);
 
-                        // "причесать" условия запуска библиотеки после подтверждения разрешения выше
-                        setTimeout(() => {
-                            // alert приостанаыливает выполнение скрипта - т.е. пользователь точно ответит на запрос о разрешении доступа, затем закроет alert - и библиотека запустится (или можно сделать запуск по кнопке или перезагружать сайт)
+                        newScriptTag.onload = () => {
+                            // alert приостанаыливает выполнение скрипта - т.е. пользователь точно ответит на запрос о разрешении доступа, затем закроет alert - и библиотека запустится (или можно сделать запуск по кнопке)
                             alert(
                                 `Thanks for your choise!`
                             );
+
+                            // перезагрузка происходит независимо от разрешения пользователя доступа к moution - нет смысла перезагружать.
+                            // window.location.reload();
+
                             modal.style.display = 'none';
                             // document.body.addEventListener('touchend', () => {
                             // if (DeviceOrientationEvent.absolute) {
@@ -185,7 +188,7 @@
 
                             // }
                             // }, { once: true });
-                        }, 123);
+                        }
 
                     }, { once: true });
 
@@ -202,7 +205,7 @@
             newScriptTag.src = './js/js-libs/parallax.min.js';
             document.body.appendChild(newScriptTag);
 
-            setTimeout(() => {
+            newScriptTag.onload = () => {
                 const scenes = document.querySelectorAll('.main__scene');
                 for (let scene of scenes) {
                     new Parallax(scene);
@@ -212,7 +215,7 @@
                 console.log(
                     `new Parallax(document.querySelector('.main__img_misc-cont'))`
                 );
-            }, 123);
+            }
         }
         // }, { once: true });
 
