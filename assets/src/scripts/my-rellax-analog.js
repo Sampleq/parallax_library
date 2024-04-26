@@ -62,12 +62,12 @@ function biasUnits(units) {
         unit.style.transform = `translate3d(${(-Math.sin(1.55 * unit.horSpeedCoeff / 30) * window.scrollY) * 1.4}px, ${(-Math.sin(1.55 * unit.speedCoeff / 10) * window.scrollY) * 0.4}px, 0)`;
     }
 
-    console.log('biasUnits(units)');
+    // console.log('biasUnits(units)');
 }
 
 // add throtling decorator - we'll fire biasUnits only once in 33ms - it's 30FPS
 // with 33ms we have 19 calls instead 42 - it's ~50% of load or up to 2x faster
-biasUnits = throttle(biasUnits, 33);
+biasUnits = throttle(biasUnits, 16);
 
 function translateOnScroll(arrays) {
     biasedUnits = document.querySelectorAll(arrays);
