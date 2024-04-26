@@ -1,9 +1,11 @@
+import { throttle } from "./_throtlingDecorator";
+
 let biasedUnits;
 
 function setSpeedCoeff() {
     // biasedUnits = document.querySelectorAll(array);
     for (let el of biasedUnits) {
-        el.style.transition = '0.033s linear';
+        el.style.transition = '0.0333s linear';
         el.style.willChange = 'transform';
 
         // console.log(el.getAttribute('data-rellax-speed'))
@@ -54,6 +56,19 @@ function setSpeedCoeff() {
     }
 }
 
+
+function biasUnits(units) {
+    for (let unit of units) {
+        unit.style.transform = `translate3d(${(-Math.sin(1.55 * unit.horSpeedCoeff / 30) * window.scrollY) * 1.4}px, ${(-Math.sin(1.55 * unit.speedCoeff / 10) * window.scrollY) * 0.4}px, 0)`;
+    }
+
+    console.log('biasUnits(units)');
+}
+
+// add throtling decorator - we'll fire biasUnits only once in 33ms - it's 30FPS
+// with 33ms we have 19 calls instead 42 - it's ~50% of load or up to 2x faster
+biasUnits = throttle(biasUnits, 33);
+
 function translateOnScroll(arrays) {
     biasedUnits = document.querySelectorAll(arrays);
 
@@ -63,9 +78,7 @@ function translateOnScroll(arrays) {
         // console.warn('window.onscroll');
         // console.log(biasedUnits)
 
-        for (let el of biasedUnits) {
-            el.style.transform = `translate3d(${(-Math.sin(1.55 * el.horSpeedCoeff / 30) * window.scrollY) * 1.4}px, ${(-Math.sin(1.55 * el.speedCoeff / 10) * window.scrollY) * 0.4}px, 0)`;
-        }
+        biasUnits(biasedUnits);
     }
 
     // смотрим - не меняется ли позиция значение window.scrollY при появлении/скрытии address-bar в мобильных браузерах
